@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <button id="dark-mode-toggle">Toggle Dark Mode</button>
+        <h1>Task List</h1>
+        <form action="{{ url_for('add_task') }}" method="POST" class="task-form">
+            <input type="text" name="title" placeholder="Task Title" required>
+            <input type="datetime-local" name="due_date" required>
+            <button type="submit">Add Task</button>
+        </form>
+        <div class="color-key">
+            <h2>Color Key</h2>
+            <ul>
+                <li><span class="color-box completed"></span> Completed</li>
+                <li><span class="color-box overdue"></span> Overdue</li>
+                <li><span class="color-box pending"></span> Pending</li>
+            </ul>
+        </div>
+        <ul class="task-list">
+            {% for task in tasks %}
+                <li class="task-item {% if task.completed %}completed{% elif task.is_overdue() %}overdue{% endif %}">
+                    <div class="task-content">
+                        <span>{{ task.title }}</span>
+                        <span>Due: {{ task.due_date }}</span>
+                        <span>Completed: {{ task.completed }}</span>
+                    </div>
+                    <form action="{{ url_for('complete_task', task_id=task.id) }}" method="POST" class="complete-form">
+                        <button type="submit">Mark as {{ 'Incomplete' if task.completed else 'Complete' }}</button>
+                    </form>
+                    <form action="{{ url_for('delete_task', task_id=task.id) }}" method="POST" class="delete-form">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
