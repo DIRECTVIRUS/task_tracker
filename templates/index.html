@@ -25,7 +25,7 @@
         </div>
         <ul class="task-list">
             {% for task in tasks %}
-                <li class="task-item {% if task.completed %}completed{% elif task.is_overdue() %}overdue{% endif %}">
+                <li class="task-item {% if task.completed %}completed{% elif task.is_overdue() %}overdue{% else %}pending{% endif %}">
                     <div class="task-content">
                         <span>{{ task.title }}</span>
                         <span>Due: {{ task.due_date }}</span>
