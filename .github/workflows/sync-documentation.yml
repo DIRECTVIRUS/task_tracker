@@ -1,4 +1,4 @@
-name: Sync README and LICENSE
+name: Sync Documentation
 
 on:
   push:
@@ -20,12 +20,11 @@ jobs:
           cp documentation/license.md .github/license.md
 
       - name: Commit and push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .github/readme.md .github/license.md
           git diff --cached --quiet || git commit -m "Sync README.md and LICENSE.md to .github directory"
-          git push
-    env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+          git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git" master
