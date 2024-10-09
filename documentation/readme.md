@@ -8,17 +8,24 @@ Follow these steps to set up the Task Tracker project on your local machine.
 
 ## Setup Steps
 
-1. **Navigate into the `task_tracker` directory:**
+1. **clone the repository:**
+navigate to the directory where you want to store the Task Tracker project and run the following command:
+    ```bash
+    git clone https://github.com/DIRECTVIRUS/task_tracker.git
+    ```
+    This will create a new directory called `task_tracker` containing the project files.
+
+2. **Navigate into the `task_tracker` directory:**
     ```bash
     cd task_tracker
     ```
 
-2. **Create a virtual environment:**
+3. **Create a virtual environment:**
     ```bash
     python3.11 -m venv venv
     ```
 
-3. **Activate the virtual environment:**
+4. **Activate the virtual environment:**
     - **Linux:**
     ```bash
     source venv/bin/activate
@@ -28,7 +35,7 @@ Follow these steps to set up the Task Tracker project on your local machine.
     .\venv\Scripts\activate
     ```
 
-4. **Verify that the virtual environment is activated:**
+5. **Verify that the virtual environment is activated:**
     - **Linux:**
     ```bash
     which python
@@ -39,7 +46,7 @@ Follow these steps to set up the Task Tracker project on your local machine.
     ```
     The output should be the path to the virtual environment's Python executable, e.g., `C:\path\to\task_tracker\venv\Scripts\python.exe` (Windows) or `/path/to/task_tracker/venv/bin/python` (Linux).
 
-5. **Install the required packages:**
+6. **Install the required packages:**
     ```bash
     pip install -r requirements.txt
     ```
