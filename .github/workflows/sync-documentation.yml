@@ -1,0 +1,31 @@
+name: Sync README and LICENSE
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  copy-files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Copy README.md and LICENSE.md to .github directory
+        run: |
+          mkdir -p .github
+          cp documentation/readme.md .github/readme.md
+          cp documentation/license.md .github/license.md
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .github/readme.md .github/license.md
+          git diff --cached --quiet || git commit -m "Sync README.md and LICENSE.md to .github directory"
+          git push
+    env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
