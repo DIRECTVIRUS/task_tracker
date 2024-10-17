@@ -4,7 +4,7 @@ Follow these steps to set up the Task Tracker project on your local machine.
 
 ## Prerequisites
 
-- Ensure you have Python 3.11.10 installed on your system.
+- Ensure you have Python 3.11 installed on your system.
 
 ## Setup Steps
 
