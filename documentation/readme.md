@@ -75,9 +75,7 @@ The Task Tracker application allows you to perform the following actions:
 - mark a task as complete
 - delete a task
 - see task status (complete, incomplete or overdue) using a colour key
-
-## planned features
-- allow users to add a description to task that can be viewed with a drop down
-- allow users to filter tasks by status
-- allow users to filter tasks by a due date range
-- allow users to enter an edit mode to edit task details (name, due date, description)
+- add a description to task that can be viewed with a drop down
+- filter tasks by status
+- filter tasks by a due date range
+- edit modal to edit task details (name, due date, description)

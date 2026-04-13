@@ -1,47 +1,120 @@
 body {
-    background-color: white;
-    color: black;
-}
-
-body.dark-mode {
     background-color: #121212;
     color: white;
+    font-family: Arial, sans-serif;
 }
 
 .task-item.pending {
-    background-color: #ffff99; /* Softer yellow */
-    border-color: #ddd;
-}
-
-body.dark-mode .task-item.pending {
-    background-color: #b3b300; /* Darker yellow for dark mode */
+    background-color: #b3b300;
+    border-color: #555;
+    color: #000;
 }
 
 .task-item.completed {
-    background-color: lightgreen;
-    border-color: #ddd;
-}
-
-body.dark-mode .task-item.completed {
-    background-color: #006400; /* Darker green for dark mode */
+    background-color: #006400;
+    border-color: #555;
+    color: #fff;
 }
 
 .task-item.overdue {
-    background-color: lightcoral;
-    border-color: #ddd;
-}
-
-body.dark-mode .task-item.overdue {
-    background-color: #8b0000; /* Darker red for dark mode */
+    background-color: #8b0000;
+    border-color: #555;
+    color: #fff;
 }
 
 .container {
     width: 80%;
     margin: 0 auto;
+    padding: 20px 0;
 }
 
 .task-form {
     margin-bottom: 20px;
+    padding: 20px;
+    background-color: #2a2a2a;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.task-form input,
+.task-form textarea {
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 3px;
+    background-color: #333;
+    color: white;
+}
+
+.task-form button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.task-form button:hover {
+    background-color: #45a049;
+}
+
+/* Filters */
+.filters {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #2a2a2a;
+    border-radius: 5px;
+}
+
+.filter-form {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filter-form label {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.filter-form select,
+.filter-form input[type="date"] {
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 3px;
+    background-color: #333;
+    color: white;
+}
+
+.filter-form button {
+    padding: 8px 16px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.filter-form button:hover {
+    background-color: #0b7dda;
+}
+
+.clear-filters {
+    padding: 8px 16px;
+    background-color: #f44336;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.clear-filters:hover {
+    background-color: #da190b;
 }
 
 .task-list {
@@ -50,19 +123,148 @@ body.dark-mode .task-item.overdue {
 }
 
 .task-item {
-    padding: 10px;
+    padding: 15px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #444;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .task-content {
     display: flex;
     justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.task-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+}
+
+.task-title {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.task-item.pending .task-title {
+    color: #000;
+}
+
+.task-item.completed .task-title,
+.task-item.overdue .task-title {
+    color: #fff;
+}
+
+.task-due {
+    font-size: 14px;
+}
+
+.task-item.pending .task-due {
+    color: #000;
+}
+
+.task-item.completed .task-due,
+.task-item.overdue .task-due {
+    color: #fff;
+}
+
+.task-status {
+    font-size: 12px;
+}
+
+.task-item.pending .task-status {
+    color: #333;
+}
+
+.task-item.completed .task-status,
+.task-item.overdue .task-status {
+    color: #ccc;
+}
+
+.toggle-description {
+    background: none;
+    border: none;
+    color: #4db8ff;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+    font-size: 12px;
+}
+
+.task-item.pending .toggle-description {
+    color: #0066cc;
+}
+
+.toggle-description:hover {
+    text-decoration: underline;
+}
+
+.task-description {
+    padding: 10px;
+    border-radius: 3px;
+    margin-top: 5px;
+}
+
+.task-item.pending .task-description {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.task-item.completed .task-description,
+.task-item.overdue .task-description {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.task-description p {
+    margin: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.task-buttons {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
 }
 
 .complete-form, .delete-form {
     display: inline;
+}
+
+.btn-action {
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-action:hover {
+    background-color: #45a049;
+}
+
+.edit-btn {
+    background-color: #2196F3;
+}
+
+.edit-btn:hover {
+    background-color: #0b7dda;
+}
+
+.btn-delete {
+    background-color: #f44336;
+}
+
+.btn-delete:hover {
+    background-color: #da190b;
 }
 
 .color-key {
@@ -77,25 +279,104 @@ body.dark-mode .task-item.overdue {
 }
 
 .color-box.completed {
-    background-color: lightgreen;
-}
-
-body.dark-mode .color-box.completed {
-    background-color: #006400; /* Darker green for dark mode */
+    background-color: #006400;
 }
 
 .color-box.overdue {
-    background-color: lightcoral;
-}
-
-body.dark-mode .color-box.overdue {
-    background-color: #8b0000; /* Darker red for dark mode */
+    background-color: #8b0000;
 }
 
 .color-box.pending {
-    background-color: #ffff99; /* Softer yellow */
+    background-color: #b3b300;
 }
 
-body.dark-mode .color-box.pending {
-    background-color: #b3b300; /* Darker yellow for dark mode */
+/* Modal Styles */
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    background-color: #2a2a2a;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #fff;
+}
+
+#edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#edit-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#edit-form input,
+#edit-form textarea {
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 3px;
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: white;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.btn-save {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn-save:hover {
+    background-color: #45a049;
+}
+
+.btn-cancel {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background-color: #da190b;
 }
